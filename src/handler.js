@@ -164,7 +164,28 @@ const deleteBookingByIdHandler = (request, h) => {
   });
 };
 
+const getContactInfoHandler = () => {
+    return new Promise((resolve, reject) => {
+      const query = 'SELECT * FROM infoweb';
+  
+      connection.query(query, (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve({
+            status: 'success',
+            data: {
+              contact: results,
+            },
+          });
+        }
+      });
+    });
+  };
+
+
 module.exports = {
+    getContactInfoHandler,
   getAllBookingsHandler,
   getBookingByIdHandler,
   addBookingHandler,

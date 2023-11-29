@@ -1,4 +1,5 @@
 const {
+    getContactInfoHandler,
     addBookingHandler,
     getAllBookingsHandler,
   getBookingByIdHandler,
@@ -17,6 +18,11 @@ const {
         },
       },
     },
+    {
+        method: 'GET',
+        path: '/info',
+        handler: getContactInfoHandler,
+      },
     {
       method: 'GET',
       path: '/bookings',
