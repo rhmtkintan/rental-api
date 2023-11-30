@@ -1,18 +1,48 @@
-const dbconn = require('./models');
 const {
-    idle, lihatUser
-} = require('./handler')
-const routes = [
-    //GET
+    getContactInfoHandler,
+    addBookingHandler,
+    getAllBookingsHandler,
+  getBookingByIdHandler,
+    updateBookingByIdHandler,
+    deleteBookingByIdHandler,
+  } = require('./handler');
+  
+  const routes = [
     {
-        method: 'GET',
-        path: '/',
-        handler: idle,
+      method: 'POST',
+      path: '/bookings',
+      handler: addBookingHandler,
+      options: {
+        cors: {
+          origin: ['*'],
+        },
+      },
     },
     {
-    method: 'GET',
-    path: '/users',
-    handler: lihatUser,
-    }
-];
-module.exports = routes;
+        method: 'GET',
+        path: '/info',
+        handler: getContactInfoHandler,
+      },
+    {
+      method: 'GET',
+      path: '/bookings',
+      handler: getAllBookingsHandler,
+    },
+    {
+      method: 'GET',
+      path: '/bookings/{id}',
+      handler: getBookingByIdHandler,
+    },
+    {
+      method: 'PUT',
+      path: '/bookings/{id}',
+      handler: updateBookingByIdHandler,
+    },
+    {
+      method: 'DELETE',
+      path: '/bookings/{id}',
+      handler: deleteBookingByIdHandler,
+    },
+  ];
+  
+  module.exports = routes;
